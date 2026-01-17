@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Case Lookup</title>
+<title>Case Lookup - Michigan Courts</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/case-search.css">
@@ -21,7 +21,7 @@
     </div>
 
     <nav class="nav">
-      <a href="/courts" >Home</a>
+      <a href="/courts" class="">Home</a>
       <a href="/courts/case-search" class="active">Case Search</a>
       <a href="/courts/forms">Court Forms</a>
       <a href="/courts/e-filing">E-Filing</a>
@@ -37,14 +37,25 @@
     <h1>Case Lookup</h1>
     <p>Search court cases by Case Number, Title, or Parties</p>
   </div>
+
   <div class="search">
     <div class="search-grid">
-      <div class="field"><label>Case No</label><input id="caseSearch" onkeydown="handleEnter(event)"></div>
-      <div class="field"><label>Title</label><input id="titleSearch" onkeydown="handleEnter(event)"></div>
-      <div class="field"><label>Party Username</label><input id="userSearch" onkeydown="handleEnter(event)"></div>
+      <div class="field">
+        <label>Case No</label>
+        <input id="caseSearch" onkeydown="handleEnter(event)">
+      </div>
+      <div class="field">
+        <label>Title</label>
+        <input id="titleSearch" onkeydown="handleEnter(event)">
+      </div>
+      <div class="field">
+        <label>Party Username</label>
+        <input id="userSearch" onkeydown="handleEnter(event)">
+      </div>
       <button onclick="searchCases()">Search</button>
     </div>
   </div>
+
   <div id="results" class="results">No search performed.</div>
 </div>
 
