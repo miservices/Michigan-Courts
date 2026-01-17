@@ -18,72 +18,120 @@
   --shadow: 0 4px 8px rgba(0,0,0,0.08);
 }
 
-/* Global resets */
 * { box-sizing: border-box; }
-body { margin:0; background: var(--bg); font-family: Arial, Helvetica, sans-serif; color: var(--text); padding:28px 16px;}
 
-/* SLIM HEADER / NAV like Case Lookup */
-header.header {
-  width: 100%;
-  background: transparent;
-  padding: 10px 16px;
-  margin-bottom: 20px;
-  box-shadow: none;
-}
-.header-inner {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-}
-.logo-container {
-  display: flex;
-  align-items: center;
-  text-decoration: none;
-}
-.logo-container img { height: 32px; margin-right: 8px; }
-.logo-text { font-weight: 700; color: var(--accent); font-size: 18px; }
-
-nav.nav a {
-  margin-left: 16px;
-  text-decoration: none;
+body {
+  margin: 0;
+  background: var(--bg);
+  font-family: Arial, Helvetica, sans-serif;
   color: var(--text);
-  font-weight: 500;
-  transition: color 0.2s;
+  padding: 28px 16px;
 }
-nav.nav a:hover { color: var(--accent); }
-nav.nav a.active { color: var(--accent); font-weight: 700; }
 
-/* PAGE CONTENT */
-.app { max-width:1100px; margin:0 auto; text-align:center;}
-.page-header { margin-bottom:40px; }
-.page-header h1 { margin:0; font-size:36px; font-weight:700; color: var(--accent);}
-.page-header p { margin-top:6px; font-size:16px; color: var(--muted);}
+/* APP CONTENT */
+.app { max-width: 1100px; margin: 0 auto; text-align: center; }
 
-/* Option cards grid */
-.options-grid { display:grid; grid-template-columns:1fr 1fr; gap:30px; margin-top:20px;}
-@media (max-width:700px){.options-grid{grid-template-columns:1fr;}}
-.option-card{
+/* PAGE HEADER CARD (below nav) */
+.app .header {
+  background: transparent;   /* remove white background */
+  padding: 0;                /* remove extra padding */
+  border-radius: 0;           /* remove rounded corners */
+  box-shadow: none;           /* remove shadow */
+  margin-bottom: 40px;        /* spacing below header */
+}
+
+.app .header h1 {
+  margin: 0;
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.app .header p {
+  margin-top: 6px;
+  font-size: 16px;
+  color: var(--muted);
+}
+
+/* OPTIONS GRID */
+.options-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  margin-top: 20px;
+}
+
+@media (max-width: 700px) {
+  .options-grid { grid-template-columns: 1fr; }
+}
+
+.option-card {
   background: var(--card);
-  border:1px solid var(--border);
+  border: 1px solid var(--border);
   border-radius: var(--radius);
   box-shadow: var(--shadow);
-  padding:30px 20px;
-  cursor:pointer;
+  padding: 30px 20px;
+  cursor: pointer;
   transition: transform 0.25s, box-shadow 0.25s;
 }
-.option-card:hover{
+
+.option-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 8px 20px rgba(0,0,0,0.12);
 }
-.option-title{font-size:22px; font-weight:700; color: var(--accent); margin-bottom:10px;}
-.option-description{font-size:14px; color: var(--muted);}
-.footer-note{margin-top:40px; font-size:13px; color: var(--muted);}
+
+.option-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 10px;
+}
+
+.option-description {
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.footer-note {
+  margin-top: 40px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+/* NAVIGATION HEADER STYLING */
+header.header {
+  width: 100%;
+  background: #ffffff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  padding: 16px 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 28px;
+}
+
+.header-inner { display: flex; justify-content: space-between; align-items: center; width: 100%; }
+
+.logo-container { display: flex; align-items: center; gap: 10px; }
+
+.logo-img { height: 40px; }
+.logo-text { font-size: 18px; font-weight: 700; color: var(--accent); }
+
+.nav a {
+  margin-left: 24px;
+  text-decoration: none;
+  color: var(--text);
+  font-weight: 500;
+  transition: color 0.25s;
+}
+
+.nav a:hover,
+.nav a.active { color: var(--accent); font-weight: 700; }
 </style>
 </head>
 <body>
 
-<!-- FULL WIDTH HEADER -->
+<!-- FULL WIDTH NAVIGATION HEADER -->
 <header class="header">
   <div class="header-inner">
 
@@ -95,19 +143,19 @@ nav.nav a.active { color: var(--accent); font-weight: 700; }
     </div>
 
     <nav class="nav">
-      <a href="/courts/home">Home</a>
+      <a href="/courts" class="">Home</a>
       <a href="/courts/case-search">Case Search</a>
       <a href="/courts/forms">Court Forms</a>
       <a href="/courts/e-filing" class="active">E-Filing</a>
-      <a href="/courts/contact">Contact</a>
+      <a href="/courts/test">Contact</a>
     </nav>
 
   </div>
 </header>
 
-<!-- PAGE CONTENT -->
+<!-- FILING CENTER CONTENT -->
 <div class="app">
-  <div class="page-header">
+  <div class="header">
     <h1>Filing Center</h1>
     <p>Select an action to get started</p>
   </div>
