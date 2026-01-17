@@ -96,9 +96,9 @@ function showDetail(i){
       ${next?`<div class="hearing-banner">📅 Hearing Scheduled in the ${next.court} on ${next.date} · ${next.type}</div>`:""}
 <div class="detail-title">
   <span>${get(r,h,"Title")}</span>
-  <div style="display:flex; gap:8px;">
-    <button onclick="window.print()" style="background:#fff; color:var(--accent); border:1px solid var(--accent); padding:6px 12px; border-radius:6px; cursor:pointer;">Print</button>
-    ${portal?`<a href="${portal}" target="_blank"><button style="background:var(--accent); color:#fff; border:1px solid var(--accent); padding:6px 12px; border-radius:6px; cursor:pointer;">Open Case Tracker</button></a>`:""}
+  <div class="detail-actions" style="display:flex; gap:10px;">
+    <button class="print-button" onclick="window.print()">Print</button>
+    ${portal ? `<a href="${portal}" target="_blank"><button>Open Case Tracker</button></a>` : ""}
   </div>
 </div>
       <div class="detail-grid">
