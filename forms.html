@@ -18,88 +18,111 @@
   <!-- PapaParse for CSV -->
   <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
 </head>
-<body>
 
-<!-- ================================================= -->
-<!-- FULL WIDTH HEADER (Michigan Courts) -->
-<!-- ================================================= -->
-<header class="header">
-  <div class="header-inner">
+<!-- Add data-page attribute for JS to know current page -->
+<body data-page="forms">
 
-    <div class="logo-container">
-      <a href="/courts" class="logo-link">
-        <img src="images/court-logo.png.png" alt="Michigan Courts Logo" class="logo-img">
-        <span class="logo-text">Michigan Courts</span>
-      </a>
+  <!-- ================================================= -->
+  <!-- FULL WIDTH HEADER (Michigan Courts) -->
+  <!-- ================================================= -->
+  <header class="header">
+    <div class="header-inner">
+
+      <div class="logo-container">
+        <a href="/courts" class="logo-link" data-page="home">
+          <img src="images/court-logo.png.png" alt="Michigan Courts Logo" class="logo-img">
+          <span class="logo-text">Michigan Courts</span>
+        </a>
+      </div>
+
+      <nav class="nav">
+        <a href="/courts" data-page="home">Home</a>
+        <a href="/courts/case-search" data-page="case-search">Case Search</a>
+        <a href="/courts/forms" data-page="forms">Court Forms</a>
+        <a href="/courts/e-filing" data-page="e-filing">E-Filing</a>
+        <a href="/courts/test" data-page="contact">Contact</a>
+      </nav>
+
+    </div>
+  </header>
+
+  <!-- ================================================= -->
+  <!-- FORMS APPLICATION -->
+  <!-- ================================================= -->
+  <div class="app">
+
+    <!-- Page-specific header -->
+    <div class="page-header">
+      <h1>Michigan Forms of Justice</h1>
+      <p>Search, filter, and access official Michigan court forms.</p>
     </div>
 
-    <nav class="nav">
-      <a href="/courts" class="active">Home</a>
-      <a href="/courts/case-search">Case Search</a>
-      <a href="/courts/forms">Court Forms</a>
-      <a href="/courts/e-filing">E-Filing</a>
-      <a href="/courts/test">Contact</a>
-    </nav>
+    <!-- Controls -->
+    <div id="controls" class="controls-disabled">
+      <input
+        class="search-input"
+        id="searchInput"
+        placeholder="Search…"
+        onkeyup="applyFilters()"
+      >
+
+      <div class="filter-group">
+        <strong>Court Level:</strong><br>
+        <button class="filter-btn active" onclick="setCourt('all',this)">All</button>
+        <button class="filter-btn" onclick="setCourt('district',this)">District Court</button>
+        <button class="filter-btn" onclick="setCourt('supreme',this)">Supreme Court</button>
+      </div>
+
+      <div class="filter-group" id="categoryFilters"></div>
+    </div>
+
+    <!-- Forms -->
+    <div class="forms-wrapper">
+
+      <div class="skeleton-list" id="skeletons">
+        <div class="skeleton-card"></div>
+        <div class="skeleton-card"></div>
+        <div class="skeleton-card"></div>
+        <div class="skeleton-card"></div>
+      </div>
+
+      <div class="forms-list" id="formsList">
+        <div class="empty-state" id="emptyState">No results found</div>
+      </div>
+
+    </div>
 
   </div>
-</header>
 
-<!-- ================================================= -->
-<!-- FORMS APPLICATION -->
-<!-- ================================================= -->
-<div class="app">
+  <!-- ================================================= -->
+  <!-- GLOBAL / SITE-WIDE JS -->
+  <!-- ================================================= -->
+  <script src="js/main.js"></script>
 
-<div class="page-header">
-  <h1>Michigan Forms of Justice</h1>
-  <p>Search, filter, and access official Michigan court forms.</p>
-</div>
+  <!-- ================================================= -->
+  <!-- FORMS PAGE SPECIFIC JS -->
+  <!-- ================================================= -->
+  <script src="js/forms.js"></script>
 
-  <!-- Controls -->
-  <div id="controls" class="controls-disabled">
-    <input
-      class="search-input"
-      id="searchInput"
-      placeholder="Search…"
-      onkeyup="applyFilters()"
-    >
+  <!-- ================================================= -->
+  <!-- NAV HIGHLIGHT SCRIPT -->
+  <!-- ================================================= -->
+  <script>
+    // Highlight active nav link based on body data-page
+    window.highlightActiveNav = () => {
+      const links = document.querySelectorAll(".nav a");
+      const currentPage = document.body.dataset.page;
 
-    <div class="filter-group">
-      <strong>Court Level:</strong><br>
-      <button class="filter-btn active" onclick="setCourt('all',this)">All</button>
-      <button class="filter-btn" onclick="setCourt('district',this)">District Court</button>
-      <button class="filter-btn" onclick="setCourt('supreme',this)">Supreme Court</button>
-    </div>
+      links.forEach(link => {
+        link.classList.remove("active"); // remove any existing active
+        if (link.dataset.page === currentPage) {
+          link.classList.add("active"); // highlight current page
+        }
+      });
+    };
 
-    <div class="filter-group" id="categoryFilters"></div>
-  </div>
-
-  <!-- Forms -->
-  <div class="forms-wrapper">
-
-    <div class="skeleton-list" id="skeletons">
-      <div class="skeleton-card"></div>
-      <div class="skeleton-card"></div>
-      <div class="skeleton-card"></div>
-      <div class="skeleton-card"></div>
-    </div>
-
-    <div class="forms-list" id="formsList">
-      <div class="empty-state" id="emptyState">No results found</div>
-    </div>
-
-  </div>
-
-</div>
-
-<!-- ================================================= -->
-<!-- GLOBAL / SITE-WIDE JS -->
-<!-- ================================================= -->
-<script src="js/main.js"></script>
-
-<!-- ================================================= -->
-<!-- FORMS PAGE SPECIFIC JS -->
-<!-- ================================================= -->
-<script src="js/forms.js"></script>
+    document.addEventListener("DOMContentLoaded", highlightActiveNav);
+  </script>
 
 </body>
 </html>
