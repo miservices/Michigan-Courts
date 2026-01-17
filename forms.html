@@ -1,65 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Michigan Forms of Justice</title>
+<meta charset="UTF-8">
+<title>Michigan Forms of Justice</title>
 
-  <!-- Global CSS -->
-  <link rel="stylesheet" href="css/style.css">
+<!-- PapaParse -->
+<script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
 
-  <!-- Page CSS -->
-  <link rel="stylesheet" href="css/forms.css">
+<!-- Forms CSS -->
+<link rel="stylesheet" href="css/forms.css">
 
-  <!-- PapaParse -->
-  <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
 </head>
-
 <body>
-  <div class="app">
 
-    <div class="header">
-      <h1>Michigan Forms of Justice</h1>
-      <p>Search, filter, and access official Michigan court forms.</p>
-    </div>
+<div class="app">
 
-    <!-- Controls -->
-    <div id="controls" class="controls-disabled">
-      <input
-        class="search-input"
-        id="searchInput"
-        placeholder="Search…"
-      >
-
-      <div class="filter-group">
-        <strong>Court Level:</strong><br>
-        <button class="filter-btn active" data-court="all">All</button>
-        <button class="filter-btn" data-court="district">District Court</button>
-        <button class="filter-btn" data-court="supreme">Supreme Court</button>
-      </div>
-
-      <div class="filter-group" id="categoryFilters"></div>
-    </div>
-
-    <!-- Forms -->
-    <div class="forms-wrapper">
-      <div class="skeleton-list" id="skeletons">
-        <div class="skeleton-card"></div>
-        <div class="skeleton-card"></div>
-        <div class="skeleton-card"></div>
-        <div class="skeleton-card"></div>
-      </div>
-
-      <div class="forms-list" id="formsList">
-        <div class="empty-state" id="emptyState">No results found</div>
-      </div>
-    </div>
-
+  <div class="header">
+    <h1>Michigan Forms of Justice</h1>
+    <p>Search, filter, and access official Michigan court forms.</p>
   </div>
 
-  <!-- Global JS -->
-  <script src="js/main.js"></script>
+  <!-- Controls (disabled until load) -->
+  <div id="controls" class="controls-disabled">
+    <input class="search-input" id="searchInput" placeholder="Search…" onkeyup="applyFilters()">
 
-  <!-- Page JS -->
-  <script src="js/forms.js"></script>
+    <div class="filter-group">
+      <strong>Court Level:</strong><br>
+      <button class="filter-btn active" onclick="setCourt('all',this)">All</button>
+      <button class="filter-btn" onclick="setCourt('district',this)">District Court</button>
+      <button class="filter-btn" onclick="setCourt('supreme',this)">Supreme Court</button>
+    </div>
+
+    <div class="filter-group" id="categoryFilters"></div>
+  </div>
+
+  <!-- Forms -->
+  <div class="forms-wrapper">
+    <div class="skeleton-list" id="skeletons">
+      <div class="skeleton-card"></div>
+      <div class="skeleton-card"></div>
+      <div class="skeleton-card"></div>
+      <div class="skeleton-card"></div>
+    </div>
+
+    <div class="forms-list" id="formsList">
+      <div class="empty-state" id="emptyState">No results found</div>
+    </div>
+  </div>
+
+</div>
+
+<!-- Forms JS -->
+<script src="js/forms.js"></script>
+
 </body>
 </html>
