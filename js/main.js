@@ -24,7 +24,6 @@ window.scrollTopSmooth = () => {
 window.showGlobalError = (containerId, message) => {
   const box = $(containerId);
   if (!box) return;
-  box.innerHTML = `<div class="error-banner">${message}</div>`;
+  box.innerHTML = `<div style="padding:12px;border:1px solid #f00;background:#fee;color:#900;border-radius:6px;font-weight:600">${message}</div>`;
   scrollTopSmooth();
 };
-
