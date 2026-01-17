@@ -2,62 +2,26 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Michigan Courts - Case Search</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="css/style.css">
+<title>Case Lookup</title>
+<link rel="stylesheet" href="css/case-search.css">
 </head>
 <body>
-
-<!-- FULL WIDTH HEADER -->
-<header class="header">
-  <div class="header-inner">
-
-    <div class="logo-container">
-      <a href="/courts" class="logo-link">
-        <img src="images/court-logo.png.png" alt="Michigan Courts Logo" class="logo-img">
-        <span class="logo-text">Michigan Courts</span>
-      </a>
-    </div>
-
-    <nav class="nav">
-      <a href="/courts">Home</a>
-      <a href="/courts/case-search" class="active">Case Search</a>
-      <a href="/courts/forms">Court Forms</a>
-      <a href="/courts/e-filing">E-Filing</a>
-      <a href="/courts/test">Contact</a>
-    </nav>
-
-  </div>
-</header>
-
-<!-- PAGE CONTENT -->
 <div class="app">
-  <main>
-    <section class="case-search">
-      <h1>Case Search</h1>
-      <p class="placeholder">
-        Search form and results will appear here.
-      </p>
-
-      <!-- Example placeholder form -->
-      <form id="caseSearchForm">
-        <label for="caseNumber">Case Number:</label>
-        <input type="text" id="caseNumber" name="caseNumber" placeholder="Enter case number">
-
-        <label for="partyName">Party Name:</label>
-        <input type="text" id="partyName" name="partyName" placeholder="Enter party name">
-
-        <button type="submit">Search</button>
-      </form>
-
-      <!-- Placeholder for search results -->
-      <div id="searchResults">
-        <!-- Results will be dynamically inserted here -->
-      </div>
-    </section>
-  </main>
+  <div class="header">
+    <h1>Case Lookup</h1>
+    <p>Search court cases by Case Number, Title, or Parties</p>
+  </div>
+  <div class="search">
+    <div class="search-grid">
+      <div class="field"><label>Case No</label><input id="caseSearch" onkeydown="handleEnter(event)"></div>
+      <div class="field"><label>Title</label><input id="titleSearch" onkeydown="handleEnter(event)"></div>
+      <div class="field"><label>Party Username</label><input id="userSearch" onkeydown="handleEnter(event)"></div>
+      <button onclick="searchCases()">Search</button>
+    </div>
+  </div>
+  <div id="results" class="results">No search performed.</div>
 </div>
 
-<script src="js/main.js"></script>
+<script src="js/case-search.js"></script>
 </body>
 </html>
