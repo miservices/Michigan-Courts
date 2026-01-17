@@ -28,31 +28,23 @@ window.showGlobalError = (containerId, message) => {
   scrollTopSmooth();
 };
 
-// Highlight active nav link based on current URL
+// Highlight active nav link based on current file
 window.highlightActiveNav = () => {
   const links = document.querySelectorAll(".nav a");
-  const path = window.location.pathname; // e.g., "/courts/forms"
+  const currentFile = window.location.pathname.split("/").pop(); // e.g., "index.html" or "forms.html"
 
-  // First, remove 'active' from all links
+  // Remove active from all links first
   links.forEach(link => link.classList.remove("active"));
 
-  // Then, add 'active' to the link that matches the path
-  let found = false;
+  // Loop through links and check if their href matches the current file
   links.forEach(link => {
-    const href = link.getAttribute("href");
-
-    // If the current path starts with the link href, mark it active
-    if (path.startsWith(href)) {
+    let hrefFile = link.getAttribute("href").split("/").pop(); // get "index.html" or "forms.html"
+    if (hrefFile === currentFile || (currentFile === "" && hrefFile === "index.html")) {
       link.classList.add("active");
-      found = true;
     }
   });
-
-  // Fallback: if no link matches, highlight Home
-  if (!found && links.length) {
-    links[0].classList.add("active");
-  }
 };
 
 // Run after DOM loads
 document.addEventListener("DOMContentLoaded", highlightActiveNav);
+
