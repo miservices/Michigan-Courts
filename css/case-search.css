@@ -28,19 +28,23 @@ body {
   margin: 0 auto;
 }
 
-/* Header */
-.header {
-  margin-bottom: 22px;
+/* Case Lookup Header - no white background */
+.app .header {
+  background: transparent;   /* remove white card background */
+  padding: 0;                /* remove extra padding */
+  border-radius: 0;           /* no rounded corners */
+  box-shadow: none;           /* remove shadow */
+  margin-bottom: 20px;        /* spacing from search */
 }
 
-.header h1 {
+.app .header h1 {
   margin: 0;
   font-size: 28px;
   font-weight: 700;
   color: var(--accent);
 }
 
-.header p {
+.app .header p {
   margin-top: 6px;
   color: var(--muted);
 }
