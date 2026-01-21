@@ -2,17 +2,37 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Case Update Entry</title>
+<title>Case Update - Michigan Courts</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/case-search.css">
 <link rel="stylesheet" href="css/case-update.css">
 </head>
 <body>
 
+<!-- FULL WIDTH HEADER -->
+<header class="header">
+  <div class="header-inner">
+    <div class="logo-container">
+      <a href="/courts" class="logo-link">
+        <img src="images/court-logo.png.png" alt="Michigan Courts Logo" class="logo-img">
+        <span class="logo-text">Michigan Courts</span>
+      </a>
+    </div>
+    <nav class="nav">
+      <a href="/courts" class="">Home</a>
+      <a href="/courts/case-search" class="">Case Search</a>
+      <a href="/courts/forms">Court Forms</a>
+      <a href="/courts/e-filing">E-Filing</a>
+      <a href="/courts/test">Contact</a>
+    </nav>
+  </div>
+</header>
+
 <div class="app">
   <div class="header">
     <h1>Case Update Submission</h1>
-    <p>Internal court staff tool</p>
+    <p>Internal staff tool to submit case events</p>
   </div>
 
   <div class="update-card">
@@ -52,7 +72,6 @@
     </div>
 
     <button onclick="submitUpdate()">Submit Update</button>
-
     <div id="status" class="status"></div>
   </div>
 </div>
